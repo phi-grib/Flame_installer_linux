@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name[en_US]=Flame
+Version=1.0
+Comment=Run flame executable file
+Type=Application
+Terminal=false
+Icon=$HOME/Flame_installer_linux/exec/flame_icon_round.png
+Exec=bash -c '$HOME/Flame_installer_linux/execute.sh;$SHELL'
+Categories=Application

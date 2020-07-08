@@ -52,5 +52,5 @@ else
 fi
 
 # Adding Flame executable in desktop
-cp Flame.desktop $HOME/Desktop
+cp exec/Flame.desktop $HOME/Desktop
 
