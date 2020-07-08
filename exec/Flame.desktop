@@ -5,5 +5,5 @@ Comment=Run flame executable file
 Type=Application
 Terminal=false
 Icon=$HOME/Flame_installer_linux/exec/flame_icon_round.png
-Exec=bash -c '$HOME/Flame_installer_linux/execute.sh;$SHELL'
+Exec=bash -c '$HOME/Flame_installer_linux/flame_api.sh;$SHELL'
 Categories=Application
