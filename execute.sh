@@ -3,7 +3,7 @@
 conda info -a
 conda init
 source activate flame
-apidir=$(locate -b flame_API)
+apidir=$(find $HOME/flame_core -type d -name flame_API)
 cd "${apidir}/flame_api"
 python manage.py runserver &
 sleep 5
