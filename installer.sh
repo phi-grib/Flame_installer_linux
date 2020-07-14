@@ -53,6 +53,7 @@ fi
 
 # Adding Flame executable in desktop
 installer_dir=$(locate -b Flame_installer_linux)
-cd ${installer_dir}
-cp exec/Flame.desktop $HOME/Desktop
-
+cd ${installer_dir}/exec
+sed -i "s?\/home\/eric?$HOME?" Flame.desktop
+cp Flame.desktop $HOME/Desktop
+cp Flame.desktop $HOME/.local/share/applications
