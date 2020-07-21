@@ -34,6 +34,8 @@ if [ $? -eq 0 ];
 		cd $HOME/flame_core/flame
 		git pull
 		pip install -e .
+		echo "Reseting model path"
+		flame -c config -a silent
 		cd $HOME/flame_core/flame_API
 		git pull
 		echo "Flame has been updated to last version"
