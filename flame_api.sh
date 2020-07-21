@@ -1,8 +1,8 @@
 #!/bin/bash
 
 cd $HOME/flame_core/flame_API/flame_api
-conda init bash
 source $HOME/.bashrc
+conda init bash
 source activate flame
 echo "------ Using Flame `which flame` -----------"
 flame -c config
