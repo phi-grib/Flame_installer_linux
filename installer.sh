@@ -30,7 +30,13 @@ $flamedir
 
 if [ $? -eq 0 ]; 
 	then
-    		echo "Flame is present, no need to install"
+    		echo "Flame is present, updating to last version"
+		cd $HOME/flame_core/flame
+		git pull
+		pip install -e .
+		cd $HOME/flame_core/flame_API
+		git pull
+		echo "Flame has been updated to last version"
 
 else
 	#Downloading Flame and Flame API
