@@ -1,5 +1,26 @@
 #!/bin/bash
 
+#Copyright 2020 Universitat Pompeu Fabra (UPF), Barcelona, Spain.
+#Eric March, Ismael Rodríguez-Espigares
+#Under CC BY-SA 3.0 license (https://creativecommons.org/licenses/by-sa/3.0/legalcode) 
+
+DESKTOP_DIR="$HOME"/Desktop
+
+#Get script directory PATH
+#Copyright 2008-2020
+#       Under CC BY-SA 3.0 license (https://creativecommons.org/licenses/by-sa/3.0/legalcode) 
+#       Adapted from Stack Overflow answer to Peter Mortensen (https://stackoverflow.com/users/63550/peter-mortensen) and others.
+#       by Dave Dopson (https://stackoverflow.com/users/407731/dave-dopson) and others.
+#       https://stackoverflow.com/a/246128
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+SCRIPT_DIR="$DIR"
+
 #Checking miniconda/conda presence
 
 condadir="which conda"
@@ -74,8 +95,9 @@ else
 fi
 
 # Adding Flame executable in desktop
-installer_dir=$(find ${HOME} -name Flame_installer_linux | grep Flame)
-cd ${installer_dir}/exec
-sed -i "s?\/home\/eric?$HOME?" Flame.desktop
-cp Flame.desktop $HOME/Desktop
+cd $SCRIPT_DIR/exec
+sed -i "s?\/home\/eric\/Flame_installer_linux?$SCRIPT_DIR?" Flame.desktop
+cp Flame.desktop "$DESKTOP_DIR"
 cp Flame.desktop $HOME/.local/share/applications
+cp Stop_Flame.desktop "$DESKTOP_DIR"
+cp Stop_Flame.desktop $HOME/.local/share/applications
