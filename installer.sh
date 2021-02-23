@@ -30,23 +30,37 @@ $flamedir
 
 if [ $? -eq 0 ]; 
 	then
-    		echo "Flame is present, updating to last version"
+    		echo "Flame is present, checking if version is v1.0.0-rc2"
 		cd $HOME/flame_core/flame
-		git pull
-		pip install -e .
-		echo "Reseting model path"
-		flame -c config -a silent
+		git checkout v1.0.0-rc2
+		if [ $? -eq 0];
+			then
+				echo "Flame is updated to last stable version"
+		else
+			git pull
+			pip install -e .
+			echo "Reseting model path"
+			flame -c config -a silent
+			git checkout v1.0.0-rc2
+		
 		cd $HOME/flame_core/flame_API
-		git pull
-		echo "Flame has been updated to last version"
+		git checkout v1.0.0-rc2
+		if [ $? -eq 0];
+			then
+				echo "Flame API is updated to last stable version"
+		else
+			git pull
+			git checkout v1.0.0-rc2
+		
+		echo "Flame and Flame API have been updated to stable version v1.0.0-rc2"
 
 else
 	#Downloading Flame and Flame API
-	echo "Flame is not present"
+	echo "Flame is not present. Installing stable version v1.0.0-rc2"
 	mkdir $HOME/flame_core
 	cd $HOME/flame_core
-	git clone https://github.com/phi-grib/flame.git
-	git clone https://github.com/phi-grib/flame_API.git
+	git clone https://github.com/phi-grib/flame.git --branch v1.0.0-rc2 --depth 1
+	git clone https://github.com/phi-grib/flame_API.git --branch v1.0.0-rc2 --depth 1
 	cd flame
 	echo "------- Working dir `pwd` -------"
 	conda info -a
