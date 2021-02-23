@@ -6,12 +6,12 @@ condadir="which conda"
 $condadir
 
 if [ $? -eq 0 ]; 
-	then
-    		echo "Conda is present"
-		export PATH="$condadir/bin:$PATH"
-		conda config --set always_yes yes
-		conda update -q conda
-		source $HOME/.bashrc
+then
+	echo "Conda is present"
+	export PATH="$condadir/bin:$PATH"
+	conda config --set always_yes yes
+	conda update -q conda
+	source $HOME/.bashrc
 
 else
 	echo "conda is not present"
@@ -29,30 +29,30 @@ flamedir="source activate flame"
 $flamedir
 
 if [ $? -eq 0 ]; 
+then
+	echo "Flame is present, checking if version is v1.0.0-rc2"
+	cd $HOME/flame_core/flame
+	git checkout v1.0.0-rc2
+	if [ $? -eq 0 ];
 	then
-    		echo "Flame is present, checking if version is v1.0.0-rc2"
-		cd $HOME/flame_core/flame
+		echo "Flame is updated to last stable version"
+	else
+		git pull
+		pip install -e .
+		echo "Reseting model path"
+		flame -c config -a silent
 		git checkout v1.0.0-rc2
-		if [ $? -eq 0];
-			then
-				echo "Flame is updated to last stable version"
-		else
-			git pull
-			pip install -e .
-			echo "Reseting model path"
-			flame -c config -a silent
-			git checkout v1.0.0-rc2
-		
-		cd $HOME/flame_core/flame_API
+	fi
+	cd $HOME/flame_core/flame_API
+	git checkout v1.0.0-rc2
+	if [ $? -eq 0 ];
+	then
+		echo "Flame API is updated to last stable version"
+	else
+		git pull
 		git checkout v1.0.0-rc2
-		if [ $? -eq 0];
-			then
-				echo "Flame API is updated to last stable version"
-		else
-			git pull
-			git checkout v1.0.0-rc2
-		
-		echo "Flame and Flame API have been updated to stable version v1.0.0-rc2"
+	fi
+	echo "Flame and Flame API have been updated to stable version v1.0.0-rc2"
 
 else
 	#Downloading Flame and Flame API
