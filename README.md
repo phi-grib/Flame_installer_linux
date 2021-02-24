@@ -6,7 +6,7 @@ Instructions:
 1. `git clone https://github.com/phi-grib/Flame_installer_linux/`
 2. `cd Flame_installer_linux`
 3. `bash installer.sh`
-4. After insallation -> `bash flame_api.sh`
+4. After installation -> `bash flame_api.sh`
                OR
    Go to Desktop -> Double click on Flame executable
 
