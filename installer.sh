@@ -99,5 +99,3 @@ cd $SCRIPT_DIR/exec
 sed -i "s?\/home\/eric\/Flame_installer_linux?$SCRIPT_DIR?" Flame.desktop
 cp Flame.desktop "$DESKTOP_DIR"
 cp Flame.desktop $HOME/.local/share/applications
-cp Stop_Flame.desktop "$DESKTOP_DIR"
-cp Stop_Flame.desktop $HOME/.local/share/applications
