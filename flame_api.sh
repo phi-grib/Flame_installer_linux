@@ -9,7 +9,10 @@ open_browser () {
 FLAME_DIR="$HOME/flame_core/flame_API/flame_api"
 cd "$FLAME_DIR"
 source $HOME/.bashrc
-conda init bash
-source activate flame
+
+# Carga las funciones de Conda en el subshell y activa el entorno
+eval "$(conda shell.bash hook)"
+conda activate flame
+
 open_browser &
 python manage.py runserver --noreload
